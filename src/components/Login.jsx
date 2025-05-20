@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Login = () => {
   return (
@@ -11,9 +12,9 @@ const Login = () => {
             <input type="email" className="input w-full" placeholder="Email" />
             <label className="label">Password</label>
             <input type="password" className="input w-full" placeholder="Password" />
-            <div>
-              <a className="link link-hover">Forgot password?</a>
-            </div>
+            <Link to={"/register"}>
+              <a className="link  text-blue-700">Register Now</a>
+            </Link>
             <button className="btn btn-neutral mt-4">Login</button>
           </fieldset>
         </div>
