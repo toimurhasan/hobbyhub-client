@@ -10,10 +10,12 @@ import AllGroups from "./components/AllGroups";
 import MyGroups from "./components/MyGroups";
 import Group from "./components/Group";
 import UpdateGroup from "./components/UpdateGroup";
+import RootLayout from "./layouts/RootLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    Component: RootLayout,
     children: [
       {
         index: true,
