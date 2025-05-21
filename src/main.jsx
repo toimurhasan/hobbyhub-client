@@ -11,6 +11,7 @@ import MyGroups from "./components/MyGroups";
 import Group from "./components/Group";
 import UpdateGroup from "./components/UpdateGroup";
 import RootLayout from "./layouts/RootLayout";
+import Error from "./components/Error";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
         Component: MyGroups,
       },
     ],
+  },
+  {
+    path: "*",
+    Component: Error,
   },
 ]);
 
