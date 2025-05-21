@@ -1,16 +1,20 @@
 import React from "react";
+import { NavLink } from "react-router";
 
 const Navbar = () => {
   const links = (
     <>
       <li>
-        <a>Item 1</a>
+        <NavLink>Home</NavLink>
       </li>
       <li>
-        <a>Item 1</a>
+        <NavLink>All Groups</NavLink>
       </li>
       <li>
-        <a>Item 1</a>
+        <NavLink>Create Group</NavLink>
+      </li>
+      <li>
+        <NavLink>My Groups</NavLink>
       </li>
     </>
   );
@@ -43,13 +47,13 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">HobbyHub</a>
+        <a className="cursor-pointer text-xl">HobbyHub</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <a className="btn">Register / Login</a>
       </div>
     </div>
   );
