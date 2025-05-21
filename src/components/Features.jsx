@@ -3,7 +3,7 @@ import React from "react";
 const Features = () => {
   return (
     <div>
-      <section className=" dark:bg-gray-100 dark:text-gray-800">
+      <section className="rounded-xl dark:bg-gray-100 dark:text-gray-800">
         <div className="container mx-auto p-4 my-6 space-y-2 text-center">
           <h2 className="text-5xl font-bold">Built to empower every team</h2>
           <p className="dark:text-gray-600">Libero minima optio qui</p>

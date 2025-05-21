@@ -5,11 +5,11 @@ import Features from "./Features";
 
 const Home = () => {
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="mt-6">
-        <Banner />
-      </div>
+    <div className="max-w-6xl mx-auto space-y-6 my-6">
+      <Banner />
+
       <Features />
+
       <Testimonial />
     </div>
   );
