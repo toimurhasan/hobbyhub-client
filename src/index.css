@@ -4,3 +4,8 @@
 a.active {
   background: #00000011;
 }
+
+.swiper {
+  height: 70vh; /* Set your desired height */
+  border-radius: 10px;
+}
