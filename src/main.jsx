@@ -5,6 +5,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+import "react-tooltip/dist/react-tooltip.css";
+
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "./components/Home";
 import Login from "./components/Login";

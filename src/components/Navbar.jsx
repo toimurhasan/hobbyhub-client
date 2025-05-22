@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   // const user = useContext(AuthContext);
@@ -73,7 +74,11 @@ const Navbar = () => {
             <button onClick={clickHandler} className="btn">
               Logout
             </button>
-            <div className="avatar">
+            <div
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content={currentUser.displayName}
+              className="avatar"
+            >
               <div className="w-10 rounded-full">
                 <img src={currentUser.photoURL} />
               </div>
@@ -90,6 +95,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
+      <Tooltip id="my-tooltip" />
     </div>
   );
 };
