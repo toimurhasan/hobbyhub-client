@@ -1,18 +1,39 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
 
 const Register = () => {
-  const { createUser } = use(AuthContext);
+  const { createUser, updateUserInfo } = use(AuthContext);
+
+  const [password, setPassword] = useState("");
+  const [isValid, setIsValid] = useState(true);
+
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+    setIsValid(passwordRegex.test(value));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const name = form.name.value;
+    const photo = form.photo.value;
     createUser(email, password)
       .then(() => {
-        toast.success("Register Successful");
+        updateUserInfo(name, photo)
+          .then(() => {
+            toast.success("Register Successful");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            toast.error(errorCode);
+          });
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -27,13 +48,28 @@ const Register = () => {
             <h1 className="text-2xl text-center font-semibold">Register</h1>
             <form onSubmit={handleSubmit} className="fieldset">
               <label className="label">Name</label>
-              <input type="text" className="input w-full" placeholder="Name" />
+              <input required name="name" type="text" className="input w-full" placeholder="Name" />
               <label className="label">Email</label>
-              <input name="email" type="email" className="input w-full" placeholder="Email" />
+              <input
+                required
+                name="email"
+                type="email"
+                className="input w-full"
+                placeholder="Email"
+              />
               <label className="label">Photo</label>
-              <input type="text" className="input w-full" placeholder="Photo URL" />
+              <input
+                required
+                name="photo"
+                type="text"
+                className="input w-full"
+                placeholder="Photo URL"
+              />
               <label className="label">Password</label>
               <input
+                onChange={handleChange}
+                value={password}
+                required
                 name="password"
                 type="password"
                 className="input w-full"
@@ -42,9 +78,21 @@ const Register = () => {
               <Link to={"/login"} className="link  text-blue-700">
                 Login Now
               </Link>
-              <button type="submit" className="btn btn-neutral mt-4">
-                Register
-              </button>
+              {isValid ? (
+                <button type="submit" className="btn btn-neutral mt-4">
+                  Register
+                </button>
+              ) : (
+                <button disabled type="submit" className="btn btn-neutral mt-4">
+                  Register
+                </button>
+              )}
+              {!isValid && (
+                <p className="text-xs text-red-600 mt-4">
+                  Password must be at least 6 characters, and include both uppercase and lowercase
+                  letters.
+                </p>
+              )}
             </form>
           </div>
         </div>

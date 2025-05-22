@@ -38,9 +38,16 @@ const Login = () => {
           <h1 className="text-2xl text-center font-semibold">Login</h1>
           <form onSubmit={handleSubmit} className="fieldset">
             <label className="label">Email</label>
-            <input name="email" type="email" className="input w-full" placeholder="Email" />
+            <input
+              required
+              name="email"
+              type="email"
+              className="input w-full"
+              placeholder="Email"
+            />
             <label className="label">Password</label>
             <input
+              required
               name="password"
               type="password"
               className="input w-full"

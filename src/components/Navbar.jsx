@@ -6,6 +6,7 @@ const Navbar = () => {
   // const user = useContext(AuthContext);
   // console.log(user);
   const { currentUser, signOutUser } = use(AuthContext);
+  console.log(currentUser?.photoURL);
   const clickHandler = () => {
     signOutUser()
       .then(() => {
@@ -74,7 +75,7 @@ const Navbar = () => {
             </button>
             <div className="avatar">
               <div className="w-10 rounded-full">
-                <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
+                <img src={currentUser.photoURL} />
               </div>
             </div>
           </div>
