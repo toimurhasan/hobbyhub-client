@@ -16,6 +16,7 @@ import Group from "./components/Group";
 import UpdateGroup from "./components/UpdateGroup";
 import RootLayout from "./layouts/RootLayout";
 import Error from "./components/Error";
+import AuthProvider from "./contexts/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
