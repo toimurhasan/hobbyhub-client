@@ -1,10 +1,20 @@
-import React, { useContext } from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar = () => {
-  const user = useContext(AuthContext);
-  console.log(user);
+  // const user = useContext(AuthContext);
+  // console.log(user);
+  const { currentUser, signOutUser } = use(AuthContext);
+  const clickHandler = () => {
+    signOutUser()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   const links = (
     <>
@@ -57,14 +67,27 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end gap-2">
-          <Link to={"/register"} className="btn">
-            Register
-          </Link>
-          <Link to={"/login"} className="btn">
-            Login
-          </Link>
-        </div>
+        {currentUser ? (
+          <div className="navbar-end gap-2">
+            <button onClick={clickHandler} className="btn">
+              Logout
+            </button>
+            <div className="avatar">
+              <div className="w-10 rounded-full">
+                <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="navbar-end gap-2">
+            <Link to={"/register"} className="btn">
+              Register
+            </Link>
+            <Link to={"/login"} className="btn">
+              Login
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
