@@ -4,6 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 
 const CreateGroup = () => {
   const { currentUser } = use(AuthContext);
+  // console.log(currentUser);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -48,7 +49,7 @@ const CreateGroup = () => {
                 placeholder="Enter Group Name"
               />
               <label className="label">Hobby Category</label>
-              <select name="colorSelect" defaultValue="Pick a color" className="select w-full">
+              <select name="categorySelect" defaultValue="Pick a color" className="select w-full">
                 <option disabled={true}>Hobby Category</option>
                 <option>Drawing & Painting</option>
                 <option>Photography</option>
@@ -114,7 +115,7 @@ const CreateGroup = () => {
                 name="email"
                 type="text"
                 className="input w-full"
-                value={currentUser?.email}
+                value={currentUser?.email || "No email attached"}
                 readOnly
               />
 

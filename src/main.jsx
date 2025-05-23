@@ -60,7 +60,11 @@ const router = createBrowserRouter([
       },
       {
         path: "myGroups",
-        Component: MyGroups,
+        element: (
+          <PrivateRoute>
+            <MyGroups></MyGroups>
+          </PrivateRoute>
+        ),
       },
       {
         path: "*",
