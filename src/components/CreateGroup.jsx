@@ -1,13 +1,16 @@
-import React from "react";
+import React, { use } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../contexts/AuthContext";
 
 const CreateGroup = () => {
+  const { currentUser } = use(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    console.log(data);
+    // console.log(data);
 
     fetch("https://hobbyhub-server-omega.vercel.app/createGroup", {
       method: "POST",
@@ -20,9 +23,9 @@ const CreateGroup = () => {
       .then((data) => {
         Swal.fire({
           icon: "success",
-          title: "Your work has been saved",
+          title: "Your Group Has Been Created!",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
       });
   };
@@ -76,7 +79,7 @@ const CreateGroup = () => {
               <input
                 required
                 name="maxMembers"
-                type="text"
+                type="number"
                 className="input w-full"
                 placeholder="Enter Max Members"
               />
@@ -102,7 +105,8 @@ const CreateGroup = () => {
                 name="username"
                 type="text"
                 className="input w-full"
-                placeholder="Tamim"
+                value={currentUser.displayName}
+                readOnly
               />
               <label className="label">User Email</label>
               <input
@@ -110,7 +114,8 @@ const CreateGroup = () => {
                 name="email"
                 type="text"
                 className="input w-full"
-                placeholder="2imur.hasan@gmail.com"
+                value={currentUser?.email}
+                readOnly
               />
 
               <button className="btn col-span-2 mx-auto px-16 bg-gray-300 mt-4">Create</button>
