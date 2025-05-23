@@ -17,7 +17,14 @@ const CreateGroup = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        Swal.fire({
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
   return (
     <div>
@@ -31,6 +38,7 @@ const CreateGroup = () => {
             <form onSubmit={handleSubmit} className="fieldset grid-cols-2">
               <label className="label">Group Name</label>
               <input
+                required
                 name="groupName"
                 type="text"
                 className="input w-full"
@@ -50,6 +58,7 @@ const CreateGroup = () => {
               </select>
               <label className="label">Description</label>
               <input
+                required
                 name="groupDescription"
                 type="text"
                 className="input w-full"
@@ -57,6 +66,7 @@ const CreateGroup = () => {
               />
               <label className="label">Meeting Location</label>
               <input
+                required
                 name="meetingLocation"
                 type="text"
                 className="input w-full"
@@ -64,6 +74,7 @@ const CreateGroup = () => {
               />
               <label className="label">Max Members</label>
               <input
+                required
                 name="maxMembers"
                 type="text"
                 className="input w-full"
@@ -71,6 +82,7 @@ const CreateGroup = () => {
               />
               <label className="label">Start Date</label>
               <input
+                required
                 name="startDate"
                 type="date"
                 className="input w-full"
@@ -78,15 +90,23 @@ const CreateGroup = () => {
               />
               <label className="label">Image URL</label>
               <input
+                required
                 name="imageURL"
                 type="text"
                 className="input w-full"
                 placeholder="Enter Image URL"
               />
               <label className="label">Username</label>
-              <input name="username" type="text" className="input w-full" placeholder="Tamim" />
+              <input
+                required
+                name="username"
+                type="text"
+                className="input w-full"
+                placeholder="Tamim"
+              />
               <label className="label">User Email</label>
               <input
+                required
                 name="email"
                 type="text"
                 className="input w-full"
