@@ -19,6 +19,7 @@ import UpdateGroup from "./components/UpdateGroup";
 import RootLayout from "./layouts/RootLayout";
 import Error from "./components/Error";
 import AuthProvider from "./contexts/AuthProvider";
+import PrivateRoute from "./routes/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
       },
       {
         path: "createGroup",
-        Component: CreateGroup,
+        element: (
+          <PrivateRoute>
+            <CreateGroup />
+          </PrivateRoute>
+        ),
       },
       {
         path: "groups",
