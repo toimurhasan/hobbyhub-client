@@ -4,10 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
-  // const user = useContext(AuthContext);
-  // console.log(user);
   const { currentUser, signOutUser } = use(AuthContext);
-  console.log(currentUser?.photoURL);
   const clickHandler = () => {
     signOutUser()
       .then(() => {
