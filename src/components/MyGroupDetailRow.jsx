@@ -1,7 +1,7 @@
 import React from "react";
 
-const MyGroupDetailRow = ({ group, index }) => {
-  const { groupName, groupDescription, categorySelect, imageURL, meetingLocation } = group;
+const MyGroupDetailRow = ({ group, index, handleDelete }) => {
+  const { _id, groupName, groupDescription, categorySelect, imageURL, meetingLocation } = group;
 
   return (
     <tr>
@@ -26,7 +26,14 @@ const MyGroupDetailRow = ({ group, index }) => {
       </td>
       <td className="space-x-2">
         <button className="btn">Update</button>
-        <button className="btn">Delete</button>
+        <button
+          onClick={() => {
+            handleDelete(_id);
+          }}
+          className="btn"
+        >
+          Delete
+        </button>
       </td>
     </tr>
   );

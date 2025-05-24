@@ -8,9 +8,9 @@ const RootLayout = () => {
   return (
     <div>
       <Navbar />
-      <div className="mx-4">
+      <main className="mx-4">
         <Outlet />
-      </div>
+      </main>
       <Footer />
       <ToastContainer />
     </div>
