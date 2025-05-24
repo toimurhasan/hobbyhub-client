@@ -61,7 +61,9 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="cursor-pointer text-xl">HobbyHub</a>
+          <Link to="/">
+            <h1 className="cursor-pointer text-xl">HobbyHub</h1>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>

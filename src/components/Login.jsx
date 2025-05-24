@@ -1,10 +1,13 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { signInUser, continueWithGithub, currentUser } = use(AuthContext);
+  const { signInUser, continueWithGithub } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  // console.log(location);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,6 +17,7 @@ const Login = () => {
     signInUser(email, password)
       .then(() => {
         toast.success("Login Successful.");
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -24,6 +28,8 @@ const Login = () => {
     continueWithGithub()
       .then(() => {
         toast.success("Continue with github successful");
+        // console.log(currentUser);
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         // Handle Errors here.
