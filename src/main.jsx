@@ -52,7 +52,8 @@ const router = createBrowserRouter([
       },
       {
         path: "group/:id",
-        loader: ({ params }) => fetch(`http://localhost:3000/group/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://hobbyhub-server-omega.vercel.app/group/${params.id}`),
         element: (
           <PrivateRoute>
             <Group />
