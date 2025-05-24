@@ -5,7 +5,7 @@ import GroupCard from "./GroupCard";
 const AllGroups = () => {
   const [groupsData, setGroupsData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/groups")
+    fetch("https://hobbyhub-server-omega.vercel.app/groups")
       .then((res) => res.json())
       .then((data) => setGroupsData(data));
   }, []);

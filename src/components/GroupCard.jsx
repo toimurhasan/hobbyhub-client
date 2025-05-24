@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 const GroupCard = ({ group }) => {
+  const navigate = useNavigate();
   const {
+    _id,
     groupName,
- categorySelect,
+    categorySelect,
     meetingLocation,
     maxMembers,
     startDate,
@@ -20,10 +23,21 @@ const GroupCard = ({ group }) => {
         <div className="card-body">
           <h2 className="card-title">{groupName}</h2>
           <p>
-         {groupName} is a focused community led by {username} (contact: {email}), bringing together up to {maxMembers} members who share a passion for {categorySelect}. Starting from {startDate}, we’ll gather at {meetingLocation} to learn, collaborate, and grow in a supportive space. Whether you're just starting out or already experienced, this group offers meaningful connections and purposeful engagement.
+            {groupName} is a focused community led by {username} (contact: {email}), bringing
+            together up to {maxMembers} members who share a passion for {categorySelect}. Starting
+            from {startDate}, we’ll gather at {meetingLocation} to learn, collaborate, and grow in a
+            supportive space. Whether you're just starting out or already experienced, this group
+            offers meaningful connections and purposeful engagement.
           </p>
           <div className="card-actions">
-            <button className="btn btn-primary">See More</button>
+            <button
+              onClick={() => {
+                navigate(`/group/${_id}`);
+              }}
+              className="btn btn-primary"
+            >
+              See More
+            </button>
           </div>
         </div>
       </div>
