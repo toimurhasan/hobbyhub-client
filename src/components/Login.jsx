@@ -4,7 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { signInUser, continueWithGithub } = use(AuthContext);
+  const { signInUser, continueWithGithub, currentUser } = use(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();

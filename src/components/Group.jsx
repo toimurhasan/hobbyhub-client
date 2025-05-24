@@ -4,10 +4,11 @@ import GroupDetailRow from "./GroupDetailRow";
 
 const Group = () => {
   const data = useLoaderData();
-  console.log(data);
+  // console.log(data);
   return (
     <div>
-      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 max-w-3xl rounded-4xl my-5 mx-auto">
+        <img src={data.imageURL} alt="" />
         <table className="table">
           <tbody>
             {/* row 1 */}
@@ -16,6 +17,10 @@ const Group = () => {
             })}
           </tbody>
         </table>
+      </div>
+
+      <div className="flex justify-center my-5">
+        <button className=" btn btn-neutral">🎉 Join Group 🎉</button>
       </div>
     </div>
   );

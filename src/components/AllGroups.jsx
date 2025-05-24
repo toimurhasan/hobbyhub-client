@@ -17,8 +17,8 @@ const AllGroups = () => {
   if (loading) return <Loader />;
   else
     return (
-      <div>
-        <h1>All Groups</h1>
+      <div className="max-w-6xl mx-4 lg:mx-auto my-5">
+        <h1 className="text-2xl text-center font-semibold mb-5">All Groups</h1>
         <div className="grid grid-cols-3 gap-4">
           {groupsData.map((group) => (
             <GroupCard key={group._id} group={group}></GroupCard>
