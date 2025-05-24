@@ -1,9 +1,20 @@
 import React from "react";
+import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const Banner = () => {
   return (
-    <Swiper spaceBetween={50} slidesPerView={1}>
+    <Swiper
+      id="banner"
+      spaceBetween={50}
+      slidesPerView={1}
+      modules={[Autoplay]}
+      loop={true}
+      autoplay={{
+        delay: 3000, // 3 seconds
+        disableOnInteraction: false,
+      }}
+    >
       <SwiperSlide>
         <img src="https://i.ibb.co/N2972b87/debby-hudson-Gk-Zoz3g-VG8c-unsplash-min.jpg" />
       </SwiperSlide>

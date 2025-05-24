@@ -5,13 +5,14 @@ a.active {
   background: #00000011;
 }
 
-.swiper {
+#banner {
   height: 70vmin; /* Set your desired height */
   border-radius: 10px;
+  cursor: grab;
 }
 
 @media (max-width: 576px) {
-  .swiper {
+  #banner {
     height: 25vh;
   }
 }

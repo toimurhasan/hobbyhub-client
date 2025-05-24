@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 
-const GroupCard = ({ group }) => {
+const GroupCard = ({ group, hideBtn }) => {
   const navigate = useNavigate();
   const {
     _id,
@@ -30,14 +30,16 @@ const GroupCard = ({ group }) => {
             offers meaningful connections and purposeful engagement.
           </p>
           <div className="card-actions">
-            <button
-              onClick={() => {
-                navigate(`/group/${_id}`);
-              }}
-              className="btn btn-primary"
-            >
-              See More
-            </button>
+            {!hideBtn && (
+              <button
+                onClick={() => {
+                  navigate(`/group/${_id}`);
+                }}
+                className="btn btn-primary"
+              >
+                See More
+              </button>
+            )}
           </div>
         </div>
       </div>
