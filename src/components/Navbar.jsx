@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import { Tooltip } from "react-tooltip";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { currentUser, signOutUser } = use(AuthContext);
@@ -75,8 +76,10 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
+
         {currentUser ? (
           <div className="navbar-end gap-2">
+            <ThemeToggle />
             <button onClick={clickHandler} className="btn">
               Logout
             </button>
@@ -92,6 +95,7 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="navbar-end gap-2">
+            <ThemeToggle />
             <Link to={"/register"} className="btn">
               Register
             </Link>
