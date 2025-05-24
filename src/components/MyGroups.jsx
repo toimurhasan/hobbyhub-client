@@ -74,7 +74,7 @@ const MyGroups = () => {
             {/* head */}
             <thead>
               <tr>
-                <th></th>
+                <th>#</th>
                 <th>Group Name</th>
                 <th>Description</th>
                 <th>Action</th>

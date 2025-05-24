@@ -62,7 +62,10 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/">
-            <h1 className="cursor-pointer text-xl">HobbyHub</h1>
+            <h1 className="cursor-pointer text-xl ">
+              {" "}
+              <span className="font-bold">Hobby</span>Hub
+            </h1>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -78,7 +81,7 @@ const Navbar = () => {
               data-tooltip-content={currentUser.displayName}
               className="avatar"
             >
-              <div className="w-10 rounded-full">
+              <div className="w-11 rounded-full border-2 border-gray-300 shadow cursor-pointer">
                 <img src={currentUser.photoURL} />
               </div>
             </div>
