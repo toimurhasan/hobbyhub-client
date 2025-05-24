@@ -29,7 +29,7 @@ const Login = () => {
       .then(() => {
         toast.success("Continue with github successful");
         // console.log(currentUser);
-        navigate(location?.state || "/");
+        navigate("/");
       })
       .catch((error) => {
         // Handle Errors here.

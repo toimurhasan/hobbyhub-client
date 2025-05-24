@@ -1,9 +1,10 @@
 import React, { use, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
 
 const Register = () => {
+  const navigate = useNavigate();
   const { createUser, updateUserInfo } = use(AuthContext);
 
   const [password, setPassword] = useState("");
@@ -29,6 +30,7 @@ const Register = () => {
         updateUserInfo(name, photo)
           .then(() => {
             toast.success("Register Successful");
+            navigate(location?.state || "/");
           })
           .catch((error) => {
             const errorCode = error.code;

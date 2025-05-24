@@ -91,6 +91,11 @@
 - Fetch API
 - React Tooltip
 - React Simple Typewriter
+- Sweet Alert 2
+- SwiperJS
+- React Icon
+- React Toastify
+
 
 **Backend:**
 
