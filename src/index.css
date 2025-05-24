@@ -6,6 +6,12 @@ a.active {
 }
 
 .swiper {
-  height: 70vh; /* Set your desired height */
+  height: 70vmin; /* Set your desired height */
   border-radius: 10px;
+}
+
+@media (max-width: 576px) {
+  .swiper {
+    height: 25vh;
+  }
 }

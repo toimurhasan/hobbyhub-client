@@ -1,4 +1,5 @@
 import React from "react";
+import { Typewriter } from "react-simple-typewriter";
 
 const Features = () => {
   return (
@@ -7,7 +8,17 @@ const Features = () => {
         <span className="text-xs font-semibold tracking-wider uppercase dark:text-default-600">
           a shortcut to your dream
         </span>
-        <h2 className="pb-3 text-3xl font-bold md:text-4xl">Create a stylish website in minutes</h2>
+        <h2 className="pb-3 text-3xl font-bold md:text-4xl">
+          <Typewriter
+            words={["Discover hobbies.", "Meet people.", "Build communities."]}
+            loop={false}
+            cursor
+            cursorStyle="_"
+            typeSpeed={100}
+            deleteSpeed={70}
+            delaySpeed={3000}
+          />
+        </h2>
         <p className="italic">
           HobbyHub is a vibrant platform where shared interests turn into real connections. Whether
           you're looking to join a book club, start a painting circle, or organize weekend hikes,
