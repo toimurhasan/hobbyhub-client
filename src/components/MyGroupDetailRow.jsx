@@ -1,8 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 const MyGroupDetailRow = ({ group, index, handleDelete }) => {
   const { _id, groupName, groupDescription, categorySelect, imageURL, meetingLocation } = group;
-
+  const navigate = useNavigate();
   return (
     <tr>
       <th>{index + 1}</th>
@@ -25,7 +26,14 @@ const MyGroupDetailRow = ({ group, index, handleDelete }) => {
         <span className="badge badge-ghost badge-sm">{categorySelect}</span>
       </td>
       <td className="space-x-2">
-        <button className="btn">Update</button>
+        <button
+          onClick={() => {
+            navigate(`/updateGroup/${_id}`);
+          }}
+          className="btn"
+        >
+          Update
+        </button>
         <button
           onClick={() => {
             handleDelete(_id);

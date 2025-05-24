@@ -62,7 +62,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateGroup/:id",
-        Component: UpdateGroup,
+        loader: ({ params }) =>
+          fetch(`https://hobbyhub-server-omega.vercel.app/group/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateGroup />
+          </PrivateRoute>
+        ),
       },
       {
         path: "myGroups",
