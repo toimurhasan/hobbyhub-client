@@ -1,7 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { Group } from "../types/group";
 
-const GroupCard = ({ group, hideBtn }) => {
+interface GroupCardProp {
+  group: Group;
+  hideBtn?: boolean;
+}
+
+const GroupCard: React.FC<GroupCardProp> = ({ group, hideBtn }) => {
   const navigate = useNavigate();
   const {
     _id,
@@ -18,7 +24,7 @@ const GroupCard = ({ group, hideBtn }) => {
     <div>
       <div className="card bg-base-100 image-full  shadow-sm">
         <figure>
-          <img src={imageURL} />
+          <img src={imageURL} alt={groupName} />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{groupName}</h2>

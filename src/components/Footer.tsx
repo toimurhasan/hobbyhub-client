@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+const Footer:React.FC = () => {
   return (
     <div className="bg-base-200">
       <footer className="justify-between max-w-6xl mx-auto footer sm:footer-horizontal  text-base-content p-10">

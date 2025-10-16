@@ -4,10 +4,9 @@ import "./index.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
 import "react-tooltip/dist/react-tooltip.css";
 
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider, RouteObject } from "react-router"; // ✅ react-router-dom
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -24,20 +23,11 @@ import PrivateRoute from "./routes/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: RootLayout,
+    element: <RootLayout />,
     children: [
-      {
-        index: true,
-        Component: Home,
-      },
-      {
-        path: "login",
-        Component: Login,
-      },
-      {
-        path: "register",
-        Component: Register,
-      },
+      { index: true, element: <Home /> },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
       {
         path: "createGroup",
         element: (
@@ -46,13 +36,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "groups",
-        Component: AllGroups,
-      },
+      { path: "groups", element: <AllGroups /> },
       {
         path: "group/:id",
-        loader: ({ params }) =>
+        loader: async ({ params }) =>
           fetch(`https://hobbyhub-server-omega.vercel.app/group/${params.id}`),
         element: (
           <PrivateRoute>
@@ -61,8 +48,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/updateGroup/:id",
-        loader: ({ params }) =>
+        path: "updateGroup/:id",
+        loader: async ({ params }) =>
           fetch(`https://hobbyhub-server-omega.vercel.app/group/${params.id}`),
         element: (
           <PrivateRoute>
@@ -74,22 +61,22 @@ const router = createBrowserRouter([
         path: "myGroups",
         element: (
           <PrivateRoute>
-            <MyGroups></MyGroups>
+            <MyGroups />
           </PrivateRoute>
         ),
       },
-      {
-        path: "*",
-        Component: Error,
-      },
+      { path: "*", element: <Error /> },
     ],
   },
-]);
+] as RouteObject[]);
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
-  </StrictMode>
-);
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </StrictMode>
+  );
+}

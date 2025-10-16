@@ -1,9 +1,10 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import GroupDetailRow from "./GroupDetailRow";
+import { Group as GroupType } from "../types/group";
 
-const Group = () => {
-  const data = useLoaderData();
+const Group: React.FC = () => {
+  const data = useLoaderData() as GroupType;
   // console.log(data);
   return (
     <div>

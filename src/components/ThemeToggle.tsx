@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IoSunny } from "react-icons/io5";
 import { MdDarkMode } from "react-icons/md";
 
-const ThemeToggle = () => {
+const ThemeToggle: React.FC = () => {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -25,11 +25,9 @@ const ThemeToggle = () => {
       {/* sun icon */}
 
       <IoSunny size={18} className={"swap-on"} />
-     
 
       {/* moon icon */}
       <MdDarkMode size={18} className="swap-off" />
-      
     </label>
   );
 };

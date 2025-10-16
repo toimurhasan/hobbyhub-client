@@ -4,7 +4,7 @@ import Testimonial from "./Testimonial";
 import Features from "./Features";
 import FeaturedGroups from "./FeaturedGroups";
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto space-y-6 my-6">
       <Banner />

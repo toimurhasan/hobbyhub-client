@@ -2,7 +2,7 @@ import React from "react";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const Banner = () => {
+const Banner: React.FC = () => {
   return (
     <Swiper
       id="banner"

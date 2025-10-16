@@ -1,6 +1,6 @@
 import React from "react";
 
-const Error = () => {
+const Error: React.FC = () => {
   return (
     <div className="h-[calc(100vh-(65px+220px))] flex flex-col justify-center items-center text-gray-600 italic">
       <h1>404 - Page Not Found</h1>

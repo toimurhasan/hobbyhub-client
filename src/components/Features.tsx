@@ -1,7 +1,7 @@
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 
-const Features = () => {
+const Features:React.FC = () => {
   return (
     <section className="rounded-xl sm:p-8 dark:bg-gray-100 dark:text-gray-800">
       <div className="container p-4 mx-auto my-6 space-y-1 text-center">

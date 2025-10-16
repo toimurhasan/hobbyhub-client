@@ -1,40 +1,42 @@
-import React, { use } from "react";
-import { Link, NavLink } from "react-router";
-import { AuthContext } from "../contexts/AuthContext";
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router"; // ✅ Use react-router-dom for web apps
+import { AuthContext, AuthContextType } from "../contexts/AuthContext"; // ✅ Import context type
 import { Tooltip } from "react-tooltip";
 import ThemeToggle from "./ThemeToggle";
 
-const Navbar = () => {
-  const { currentUser, signOutUser } = use(AuthContext);
+const Navbar: React.FC = () => {
+  // ✅ Use useContext and type it with AuthContextType
+  const { currentUser, signOutUser } = useContext(AuthContext) as AuthContextType;
+
   const clickHandler = () => {
     signOutUser()
       .then(() => {
-        // Sign-out successful.
+        // Sign-out successful
       })
-      .catch((error) => {
-        // An error happened.
+      .catch(() => {
+        // Handle error here
       });
   };
 
   const links = (
     <>
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/groups"}>All Groups</NavLink>
+        <NavLink to="/groups">All Groups</NavLink>
       </li>
       <li>
-        <NavLink to={"/createGroup"}>Create Group</NavLink>
+        <NavLink to="/createGroup">Create Group</NavLink>
       </li>
       <li>
-        <NavLink to={"/myGroups"}>My Groups</NavLink>
+        <NavLink to="/myGroups">My Groups</NavLink>
       </li>
     </>
   );
 
   return (
-    <div className=" bg-base-100 shadow-md sticky top-0 z-10">
+    <div className="bg-base-100 shadow-md sticky top-0 z-10">
       <div className="navbar max-w-6xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -50,15 +52,15 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
+                  strokeWidth={2}
                   d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                />
               </svg>
             </div>
+
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
@@ -66,13 +68,14 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
+
           <Link to="/">
-            <h1 className="cursor-pointer text-xl ">
-              {" "}
+            <h1 className="cursor-pointer text-xl">
               <span className="font-bold">Hobby</span>Hub
             </h1>
           </Link>
         </div>
+
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
@@ -83,23 +86,24 @@ const Navbar = () => {
             <button onClick={clickHandler} className="btn">
               Logout
             </button>
+
             <div
               data-tooltip-id="my-tooltip"
               data-tooltip-content={currentUser.displayName}
               className="avatar"
             >
               <div className="w-11 rounded-full border-2 border-gray-300 shadow cursor-pointer">
-                <img src={currentUser.photoURL} />
+                <img src={currentUser.photoURL || ""} alt="User avatar" />
               </div>
             </div>
           </div>
         ) : (
           <div className="navbar-end gap-2">
             <ThemeToggle />
-            <Link to={"/register"} className="btn">
+            <Link to="/register" className="btn">
               Register
             </Link>
-            <Link to={"/login"} className="btn">
+            <Link to="/login" className="btn">
               Login
             </Link>
           </div>

@@ -1,9 +1,27 @@
 import React from "react";
 import { useNavigate } from "react-router";
 
-const MyGroupDetailRow = ({ group, index, handleDelete }) => {
+// 🟢 Define a type for the `group` prop
+interface Group {
+  _id: string;
+  groupName: string;
+  groupDescription: string;
+  categorySelect: string;
+  imageURL: string;
+  meetingLocation: string;
+}
+
+// 🟢 Define props type
+interface MyGroupDetailRowProps {
+  group: Group;
+  index: number;
+  handleDelete: (id: string) => void;
+}
+
+const MyGroupDetailRow: React.FC<MyGroupDetailRowProps> = ({ group, index, handleDelete }) => {
   const { _id, groupName, groupDescription, categorySelect, imageURL, meetingLocation } = group;
   const navigate = useNavigate();
+
   return (
     <tr>
       <th>{index + 1}</th>
@@ -11,7 +29,7 @@ const MyGroupDetailRow = ({ group, index, handleDelete }) => {
         <div className="flex items-center gap-3">
           <div className="avatar">
             <div className="mask mask-squircle h-12 w-12">
-              <img src={imageURL} alt="Avatar Tailwind CSS Component" />
+              <img src={imageURL} alt="Group" /> {/* 🟢 Updated alt text */}
             </div>
           </div>
           <div>
@@ -27,17 +45,13 @@ const MyGroupDetailRow = ({ group, index, handleDelete }) => {
       </td>
       <td className="space-x-2">
         <button
-          onClick={() => {
-            navigate(`/updateGroup/${_id}`);
-          }}
+          onClick={() => navigate(`/updateGroup/${_id}`)}
           className="btn"
         >
           Update
         </button>
         <button
-          onClick={() => {
-            handleDelete(_id);
-          }}
+          onClick={() => handleDelete(_id)}
           className="btn"
         >
           Delete

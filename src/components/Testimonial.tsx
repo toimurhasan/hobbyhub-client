@@ -1,13 +1,15 @@
 import React from "react";
 
-const Testimonial = () => {
+const Testimonial: React.FC = () => {
   return (
     <div>
       <section className="rounded-xl dark:bg-gray-100 dark:text-gray-800">
         <div className="container sm:px-6 py-12 mx-auto">
           <div className="grid items-center gap-4 xl:grid-cols-5">
             <div className="max-w-2xl lg:pl-6 mx-auto my-8 space-y-4 text-center xl:col-span-2 xl:text-left">
-              <h2 className="text-4xl font-bold">Turn Hobbies Into Lifelong Connections.</h2>
+              <h2 className="text-4xl font-bold">
+                Turn Hobbies Into Lifelong Connections.
+              </h2>
               <p className="dark:text-gray-600">
                 Whether you're looking to meet new people, learn something new, or simply share your
                 passion, HobbyHub makes it easy to connect and build real communities.
@@ -25,7 +27,7 @@ const Testimonial = () => {
                     <div className="flex items-center mt-4 space-x-4">
                       <img
                         src="https://i.ibb.co/99xBqWTn/86814638.webp"
-                        alt=""
+                        alt="Ayesha R."
                         className="w-12 h-12 object-cover bg-center bg-cover rounded-full dark:bg-gray-500"
                       />
                       <div>
@@ -34,6 +36,7 @@ const Testimonial = () => {
                       </div>
                     </div>
                   </div>
+
                   <div className="p-6 rounded shadow-md dark:bg-gray-50">
                     <p>
                       "I used HobbyHub to start a beginner hiking group. Within a month, we had over
@@ -43,8 +46,8 @@ const Testimonial = () => {
                     <div className="flex items-center mt-4 space-x-4">
                       <img
                         src="https://i.ibb.co/1YKVnCrH/images.jpg"
-                        alt=""
-                        className="w-12 object-cover h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                        alt="James P."
+                        className="w-12 h-12 object-cover bg-center bg-cover rounded-full dark:bg-gray-500"
                       />
                       <div>
                         <p className="text-lg font-semibold">James P.</p>
@@ -53,6 +56,7 @@ const Testimonial = () => {
                     </div>
                   </div>
                 </div>
+
                 <div className="grid content-center gap-4">
                   <div className="p-6 rounded shadow-md dark:bg-gray-50">
                     <p>
@@ -63,8 +67,8 @@ const Testimonial = () => {
                     <div className="flex items-center mt-4 space-x-4">
                       <img
                         src="https://i.ibb.co/pjF0zxhV/art.jpg"
-                        alt=""
-                        className="w-12 object-cover h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                        alt="Lina K."
+                        className="w-12 h-12 object-cover bg-center bg-cover rounded-full dark:bg-gray-500"
                       />
                       <div>
                         <p className="text-lg font-semibold">Lina K.</p>
@@ -72,6 +76,7 @@ const Testimonial = () => {
                       </div>
                     </div>
                   </div>
+
                   <div className="p-6 rounded shadow-md dark:bg-gray-50">
                     <p>
                       "I’ve always wanted to jam with other musicians, but didn’t know where to
@@ -81,8 +86,8 @@ const Testimonial = () => {
                     <div className="flex items-center mt-4 space-x-4">
                       <img
                         src="https://i.ibb.co/Tq2wT60N/mm.webp"
-                        alt=""
-                        className="w-12 object-cover h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                        alt="Tariq M."
+                        className="w-12 h-12 object-cover bg-center bg-cover rounded-full dark:bg-gray-500"
                       />
                       <div>
                         <p className="text-lg font-semibold">Tariq M.</p>

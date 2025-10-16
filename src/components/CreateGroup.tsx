@@ -1,50 +1,42 @@
-import React, { use } from "react";
-import { AuthContext } from "../contexts/AuthContext";
-import { useLoaderData, useNavigate } from "react-router";
+import React, { FormEvent, use } from "react";
 import Swal from "sweetalert2";
-import { toast } from "react-toastify";
+import { AuthContext } from "../contexts/AuthContext";
 
-const UpdateGroup = () => {
-  const navigate = useNavigate();
-  const data = useLoaderData();
-  const {
-    _id,
-    groupName,
-    categorySelect,
-    meetingLocation,
-    groupDescription,
-    maxMembers,
-    startDate,
-    imageURL,
-  } = data;
-  const { currentUser } = use(AuthContext);
-  const handleSubmit = (e) => {
+interface CurrentUser {
+  displayName: string;
+  email?: string;
+}
+
+interface AuthContextType {
+  currentUser: CurrentUser;
+}
+
+const CreateGroup:React.FC = () => {
+  const { currentUser } = use(AuthContext) as AuthContextType;
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target;
+    const form = e.currentTarget as HTMLFormElement;
     const formData = new FormData(form);
-    const toUpdate = Object.fromEntries(formData.entries());
+    const data = Object.fromEntries(formData.entries());
 
-    fetch(`https://hobbyhub-server-omega.vercel.app/updateGroup/${_id}`, {
-      method: "PUT",
+    // console.log(data);
+
+    fetch("https://hobbyhub-server-omega.vercel.app/createGroup", {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(toUpdate),
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.modifiedCount) {
-          toast.success("Group Updated Successfully!");
-          navigate("/myGroups");
-        }
-        if (!data.modifiedCount) {
-          Swal.fire({
-            icon: "error",
-            title: "Please Edit Information!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
+        Swal.fire({
+          icon: "success",
+          title: "Your Group Has Been Created!",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       });
   };
   return (
@@ -55,7 +47,7 @@ const UpdateGroup = () => {
       >
         <div className="card bg-base-100 mx-auto w-full max-w-lg shrink-0 shadow-2xl">
           <div className="card-body">
-            <h1 className="text-2xl text-center font-semibold">Update Group</h1>
+            <h1 className="text-2xl text-center font-semibold">Create Group</h1>
             <form onSubmit={handleSubmit} className="fieldset grid-cols-2">
               <label className="label">Group Name</label>
               <input
@@ -63,10 +55,10 @@ const UpdateGroup = () => {
                 name="groupName"
                 type="text"
                 className="input w-full"
-                defaultValue={groupName}
+                placeholder="Enter Group Name"
               />
               <label className="label">Hobby Category</label>
-              <select name="categorySelect" className="select w-full" defaultValue={categorySelect}>
+              <select name="categorySelect" defaultValue="Pick a color" className="select w-full">
                 <option disabled={true}>Hobby Category</option>
                 <option>Drawing & Painting</option>
                 <option>Photography</option>
@@ -83,7 +75,7 @@ const UpdateGroup = () => {
                 name="groupDescription"
                 type="text"
                 className="input w-full"
-                defaultValue={groupDescription}
+                placeholder="Enter Group Description"
               />
               <label className="label">Meeting Location</label>
               <input
@@ -91,7 +83,7 @@ const UpdateGroup = () => {
                 name="meetingLocation"
                 type="text"
                 className="input w-full"
-                defaultValue={meetingLocation}
+                placeholder="Enter Meeting Location"
               />
               <label className="label">Max Members</label>
               <input
@@ -99,7 +91,7 @@ const UpdateGroup = () => {
                 name="maxMembers"
                 type="number"
                 className="input w-full"
-                defaultValue={maxMembers}
+                placeholder="Enter Max Members"
               />
               <label className="label">Start Date</label>
               <input
@@ -107,7 +99,7 @@ const UpdateGroup = () => {
                 name="startDate"
                 type="date"
                 className="input w-full"
-                defaultValue={startDate}
+                placeholder="Enter Start Date"
               />
               <label className="label">Image URL</label>
               <input
@@ -115,7 +107,7 @@ const UpdateGroup = () => {
                 name="imageURL"
                 type="text"
                 className="input w-full"
-                defaultValue={imageURL}
+                placeholder="Enter Image URL"
               />
               <label className="label">Username</label>
               <input
@@ -136,7 +128,7 @@ const UpdateGroup = () => {
                 readOnly
               />
 
-              <button className="btn col-span-2 mx-auto px-16 bg-gray-300 mt-4">Update</button>
+              <button className="btn col-span-2 mx-auto px-16 bg-gray-300 mt-4">Create</button>
             </form>
           </div>
         </div>
@@ -145,4 +137,4 @@ const UpdateGroup = () => {
   );
 };
 
-export default UpdateGroup;
+export default CreateGroup;

@@ -3,14 +3,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import GroupCard from "./GroupCard";
 import Loader from "./Loader";
 import { Autoplay } from "swiper/modules";
+import { Group } from "../types/group";
 
-const FeaturedGroups = () => {
-  const [groupsData, setGroupsData] = useState([]);
-  const [loading, setLoading] = useState(true);
+const FeaturedGroups: React.FC = () => {
+  const [groupsData, setGroupsData] = useState<Group[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     fetch("https://hobbyhub-server-omega.vercel.app/groups")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data: Group[]) => {
         setLoading(false);
         setGroupsData(data.slice(0, 6)); // Limit to first 6 items
       });
@@ -28,7 +29,7 @@ const FeaturedGroups = () => {
           disableOnInteraction: false,
         }}
       >
-        {groupsData.map((group) => (
+        {groupsData.map((group: Group) => (
           <SwiperSlide>
             <GroupCard key={group._id} group={group} hideBtn={true}></GroupCard>
           </SwiperSlide>
