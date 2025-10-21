@@ -16,3 +16,5 @@ a.active {
     height: 25vh;
   }
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

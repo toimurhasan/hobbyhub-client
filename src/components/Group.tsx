@@ -5,7 +5,7 @@ import { Group as GroupType } from "../types/group";
 
 const Group: React.FC = () => {
   const data = useLoaderData() as GroupType;
-  // console.log(data);
+
   return (
     <div>
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 max-w-3xl rounded-4xl my-5 mx-auto">

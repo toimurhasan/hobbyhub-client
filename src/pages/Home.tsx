@@ -1,8 +1,8 @@
 import React from "react";
-import Banner from "./Banner";
-import Testimonial from "./Testimonial";
-import Features from "./Features";
-import FeaturedGroups from "./FeaturedGroups";
+import Banner from "../components/Banner";
+import Testimonial from "../components/Testimonial";
+import Features from "../components/Features";
+import FeaturedGroups from "../components/FeaturedGroups";
 
 const Home: React.FC = () => {
   return (

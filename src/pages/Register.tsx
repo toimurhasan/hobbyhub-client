@@ -1,27 +1,21 @@
 import React, { useContext, useState, ChangeEvent, FormEvent } from "react";
-import { Link, useNavigate, Location } from "react-router"; // ✅ react-router-dom
+import { Link, useNavigate, Location } from "react-router";
 import { AuthContext, AuthContextType } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
-
-  // ✅ Use useContext and cast to AuthContextType
   const { createUser, updateUserInfo } = useContext(AuthContext) as AuthContextType;
 
   const [password, setPassword] = useState<string>("");
   const [isValid, setIsValid] = useState<boolean>(true);
 
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-
-  // ✅ Handle live password validation
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPassword(value);
     setIsValid(passwordRegex.test(value));
   };
-
-  // ✅ Handle form submit
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -36,7 +30,6 @@ const Register: React.FC = () => {
         updateUserInfo(name, photo)
           .then(() => {
             toast.success("Register Successful");
-            // ✅ No location typing issues: navigate to root
             navigate("/");
           })
           .catch((error: { code: string }) => {

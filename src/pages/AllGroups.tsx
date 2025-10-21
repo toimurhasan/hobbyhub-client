@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import GroupCard from "./GroupCard";
-import Loader from "./Loader";
+import GroupCard from "../components/GroupCard";
+import Loader from "../components/Loader";
 import { Group } from "../types/group";
-
-
 
 const AllGroups: React.FC = () => {
   const [groupsData, setGroupsData] = useState<Group[]>([]);

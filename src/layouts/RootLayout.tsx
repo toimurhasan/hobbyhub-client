@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Navbar from "../components/Navbar";
-import { Outlet } from "react-router"; // ✅ Use react-router-dom in web
+import { Outlet } from "react-router"; 
 import Footer from "../components/Footer";
 import { ToastContainer } from "react-toastify";
 

@@ -6,17 +6,17 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "react-tooltip/dist/react-tooltip.css";
 
-import { createBrowserRouter, RouterProvider, RouteObject } from "react-router"; // ✅ react-router-dom
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import { createBrowserRouter, RouterProvider, RouteObject } from "react-router"; 
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import CreateGroup from "./components/CreateGroup";
-import AllGroups from "./components/AllGroups";
-import MyGroups from "./components/MyGroups";
+import AllGroups from "./pages/AllGroups";
+import MyGroups from "./pages/MyGroups";
 import Group from "./components/Group";
 import UpdateGroup from "./components/UpdateGroup";
 import RootLayout from "./layouts/RootLayout";
-import Error from "./components/Error";
+import Error from "./pages/Error";
 import AuthProvider from "./contexts/AuthProvider";
 import PrivateRoute from "./routes/PrivateRoute";
 

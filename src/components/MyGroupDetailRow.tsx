@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
 
-// 🟢 Define a type for the `group` prop
 interface Group {
   _id: string;
   groupName: string;
@@ -11,7 +10,6 @@ interface Group {
   meetingLocation: string;
 }
 
-// 🟢 Define props type
 interface MyGroupDetailRowProps {
   group: Group;
   index: number;
@@ -29,7 +27,7 @@ const MyGroupDetailRow: React.FC<MyGroupDetailRowProps> = ({ group, index, handl
         <div className="flex items-center gap-3">
           <div className="avatar">
             <div className="mask mask-squircle h-12 w-12">
-              <img src={imageURL} alt="Group" /> {/* 🟢 Updated alt text */}
+              <img src={imageURL} alt="Group" /> 
             </div>
           </div>
           <div>

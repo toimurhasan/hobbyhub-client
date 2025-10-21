@@ -1,20 +1,19 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router"; // ✅ Use react-router-dom for web apps
-import { AuthContext, AuthContextType } from "../contexts/AuthContext"; // ✅ Import context type
+import { Link, NavLink } from "react-router";
+import { AuthContext, AuthContextType } from "../contexts/AuthContext"; 
 import { Tooltip } from "react-tooltip";
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar: React.FC = () => {
-  // ✅ Use useContext and type it with AuthContextType
   const { currentUser, signOutUser } = useContext(AuthContext) as AuthContextType;
 
   const clickHandler = () => {
     signOutUser()
       .then(() => {
-        // Sign-out successful
+    
       })
       .catch(() => {
-        // Handle error here
+      
       });
   };
 

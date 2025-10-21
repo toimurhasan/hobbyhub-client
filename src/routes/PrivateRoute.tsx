@@ -1,6 +1,6 @@
 import React, { ReactNode, FC } from "react";
 import { AuthContext, AuthContextType } from "../contexts/AuthContext";
-import { Navigate, useLocation } from "react-router"; // ✅ react-router-dom for web
+import { Navigate, useLocation } from "react-router";
 import { useContext } from "react";
 
 interface PrivateRouteProps {

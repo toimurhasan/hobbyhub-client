@@ -4,7 +4,6 @@ import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 
-// Define the type for the group data returned by the loader
 interface GroupData {
   _id: string;
   groupName: string;
@@ -12,13 +11,13 @@ interface GroupData {
   meetingLocation: string;
   groupDescription: string;
   maxMembers: number;
-  startDate: string; // yyyy-mm-dd format
+  startDate: string;
   imageURL: string;
 }
 
 const UpdateGroup: React.FC = () => {
   const navigate = useNavigate();
-  const data = useLoaderData() as GroupData; // ✅ Typed loader data
+  const data = useLoaderData() as GroupData;
   const {
     _id,
     groupName,

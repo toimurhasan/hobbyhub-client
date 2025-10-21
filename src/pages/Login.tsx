@@ -1,32 +1,26 @@
-import React, { FormEvent, useContext } from "react"; // ✅ useContext and FormEvent imported
+import React, { FormEvent, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { AuthContext, AuthContextType } from "../contexts/AuthContext"; // ✅ import type for context
+import { AuthContext, AuthContextType } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
 
 const Login: React.FC = () => {
-  // ✅ typed as React.FC
-  // ✅ useContext instead of use(), typed with AuthContextType
   const { signInUser, continueWithGithub } = useContext(AuthContext) as AuthContextType;
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ✅ Typed event as FormEvent<HTMLFormElement>
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget; // ✅ TS-safe currentTarget
+    const form = e.currentTarget;
 
-    // ✅ Access inputs with proper casting to HTMLInputElement
     const email = (form.elements.namedItem("email") as HTMLInputElement).value;
     const password = (form.elements.namedItem("password") as HTMLInputElement).value;
 
     signInUser(email, password)
       .then(() => {
         toast.success("Login Successful.");
-        // ✅ Cast location.state as string to satisfy TS
         navigate((location.state as string) || "/");
       })
-      // ✅ Typed error object to include `code` property
       .catch((error: { code: string }) => {
         toast.error(error.code);
       });
@@ -38,7 +32,6 @@ const Login: React.FC = () => {
         toast.success("Continue with GitHub successful");
         navigate("/");
       })
-      // ✅ Typed error object
       .catch((error: { code: string }) => {
         toast.error(error.code);
       });

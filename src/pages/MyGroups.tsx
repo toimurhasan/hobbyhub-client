@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useContext } from "react"; // 🟢 changed `use` → `useContext`
+import React, { useEffect, useState, useContext } from "react"; 
 import { AuthContext } from "../contexts/AuthContext";
-import MyGroupDetailRow from "./MyGroupDetailRow";
+import MyGroupDetailRow from "../components/MyGroupDetailRow";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 
-// 🟢 Define the Group type for consistent typing
 interface Group {
   _id: string;
   groupName: string;
@@ -16,23 +15,22 @@ interface Group {
 }
 
 const MyGroups: React.FC = () => {
-  // 🟢 changed use() to useContext() — correct React hook for context
   const { currentUser } = useContext(AuthContext) as { currentUser: { displayName: string } };
 
-  const [groupData, setGroupData] = useState<Group[]>([]); // 🟢 typed state
+  const [groupData, setGroupData] = useState<Group[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!currentUser?.displayName) return; // 🟢 safety check
+    if (!currentUser?.displayName) return;
     fetch(`https://hobbyhub-server-omega.vercel.app/myGroups/${currentUser.displayName}`)
       .then((res) => res.json())
       .then((data: Group[]) => {
         setGroupData(data);
         setLoading(false);
       });
-  }, [currentUser?.displayName]); // 🟢 added dependency
+  }, [currentUser?.displayName]);
 
-  const handleDelete = (id: string) => { // 🟢 added type for id
+  const handleDelete = (id: string) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -49,7 +47,6 @@ const MyGroups: React.FC = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {
-              // 🟢 ensure we update state immutably
               const remainingGroups = groupData.filter((group) => group._id !== id);
               setGroupData(remainingGroups);
               Swal.fire({
@@ -92,7 +89,6 @@ const MyGroups: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {/* 🟢 added proper typing propagation */}
             {groupData.map((group, index) => (
               <MyGroupDetailRow
                 key={group._id}
